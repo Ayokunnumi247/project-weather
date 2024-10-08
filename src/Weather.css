@@ -1,0 +1,37 @@
+.Weather h1 {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 29px;
+  padding: 10px 5px;
+}
+
+.Weather ul {
+  margin: 0px;
+  padding: 0px 15px;
+}
+.Weather li {
+  font-size: 13px;
+  opacity: 0.7;
+  list-style: none;
+  line-height: 20px;
+  font-weight: 300;
+}
+.Weather strong {
+  font-size: 50px;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.Weather .degree {
+  font-size: 18px;
+  position: relative;
+  top: -25px;
+}
+.Weather img {
+  position: relative;
+  top: -10px;
+  left: 10px;
+}
+.Weather form {
+  border: none;
+}

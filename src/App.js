@@ -4,7 +4,7 @@ import Weather from "./Weather";
 function App() {
   return (
     <div className="App">
-      <div className="container-sm border">
+      <div className="container-sm ">
         <Weather />
         <footer>
           The project was code {""}
