@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ForecastDate from "./ForecastDate";
 import axios from "axios";
 import "./Weather.css";
 
@@ -6,7 +7,6 @@ export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ loaded: false });
 
   function handleResponse(response) {
-    console.log(response.data);
     setWeatherData({
       loaded: true,
       city: response.data.name,
@@ -16,7 +16,7 @@ export default function Weather(props) {
       description: response.data.condition.description,
       iconUrl:
         "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/scattered-clouds-day.png",
-      date: "wednesday 07:00",
+      date: new Date(response.data.time * 1000),
     });
   }
 
@@ -37,7 +37,9 @@ export default function Weather(props) {
         </form>
         <h1>{props.defaultCity}</h1>
         <ul>
-          <li>{weatherData.date}</li>
+          <li>
+            <ForecastDate date={weatherData.date} />
+          </li>
           <li className="text-capitalize">{weatherData.description}</li>
         </ul>
         <div className="row">
