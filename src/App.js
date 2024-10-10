@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
       <div className="container-sm ">
-        <Weather />
+        <Weather defaultCity="rome" />
         <footer>
           The project was code {""}
           <a href="https://github.com/Ayokunnumi247">Ayokunnumi Andu</a>

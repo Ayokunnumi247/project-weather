@@ -1,40 +1,65 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import "./Weather.css";
 
-export default function Weather() {
-  return (
-    <div className="Weather border rounded">
-      <form>
-        <input
-          type="search"
-          placeholder="Enter a city"
-          className=" rounded w-75 p-2"
-        />
-        <input
-          type="submit"
-          value="search"
-          className="btn btn-primary rounded m-3 p-2 "
-        />
-      </form>
-      <h1>New york</h1>
-      <ul>
-        <li>Wednesday 07:00</li>
-        <li>Mostly cloudly</li>
-      </ul>
-      <div className="row">
-        <div className="col-6" mt-5>
-          <img src=" https://openweathermap.org/img/wn/10d@2x.png" alt="icon" />
-          <strong>6</strong>
-          <span className="degree">°c</span>
-        </div>
-        <div className="col-6">
-          <ul>
-            <li>percipitation: 6%</li>
-            <li>Humidity: 70%</li>
-            <li>Wind: 13 km/h</li>
-          </ul>
+export default function Weather(props) {
+  const [weatherData, setWeatherData] = useState({ loaded: false });
+
+  function handleResponse(response) {
+    console.log(response.data);
+    setWeatherData({
+      loaded: true,
+      city: response.data.name,
+      temperature: response.data.temperature.current,
+      humidity: response.data.temperature.humidity,
+      wind: response.data.wind.speed,
+      description: response.data.condition.description,
+      iconUrl:
+        "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/scattered-clouds-day.png",
+      date: "wednesday 07:00",
+    });
+  }
+
+  if (weatherData.loaded) {
+    return (
+      <div className="Weather border rounded">
+        <form>
+          <input
+            type="search"
+            placeholder="Enter a city"
+            className=" rounded w-75 p-2"
+          />
+          <input
+            type="submit"
+            value="search"
+            className="btn btn-primary rounded m-3 p-2 "
+          />
+        </form>
+        <h1>{props.defaultCity}</h1>
+        <ul>
+          <li>{weatherData.date}</li>
+          <li className="text-capitalize">{weatherData.description}</li>
+        </ul>
+        <div className="row">
+          <div className="col-6">
+            <img src={weatherData.iconUrl} alt="icon" />
+            <strong> {Math.round(weatherData.temperature)}</strong>
+            <span className="degree">°c</span>
+          </div>
+          <div className="col-6">
+            <ul>
+              <li>Humidity: {weatherData.humidity}%</li>
+              <li>Wind: {weatherData.wind}km/h</li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    const apikey = "8e4efa33a280aof6c33fe6a0t3ab54ec";
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${props.defaultCity}&key=${apikey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+
+    return "loading..";
+  }
 }
