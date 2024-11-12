@@ -17,18 +17,23 @@
   font-weight: 300;
 }
 .Weather strong {
-  font-size: 50px;
+  font-size: 48px;
   font-weight: 500;
   margin-top: 10px;
 }
-.Weather .degree {
-  font-size: 18px;
+.Weather .unit {
+  font-size: 15px;
   margin-bottom: 50%;
+  position: relative;
+  top: -23px;
 }
 .Weather canvas {
-  margin-top: 20px;
+  margin: 10px 5px;
   padding-left: 20px;
 }
 .Weather form {
   border: none;
+}
+.Weather .tempIcon {
+  display: ;
 }
