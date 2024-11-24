@@ -34,3 +34,7 @@
 .Weather form {
   border: none;
 }
+
+.Weather .button {
+  width: 18% !important;
+}

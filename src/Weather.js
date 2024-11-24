@@ -47,7 +47,7 @@ export default function Weather(props) {
           <input
             type="submit"
             value="search"
-            className="btn btn-primary rounded m-3 p-2 "
+            className="btn btn-primary btn-md rounded  m-3 p-2 button"
           />
         </form>
         <WeatherData data={WeatherInfo} />

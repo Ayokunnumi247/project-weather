@@ -9,6 +9,7 @@
   opacity: 0.5;
 }
 .WeatherForecast-day {
+  padding-left: 15%;
   opacity: 0.5;
 }
 .WeatherForecast canvas {
